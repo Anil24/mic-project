@@ -1,0 +1,75 @@
+/* global style css */
+@import "~normalize.css/normalize.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "material-icons.woff";
+
+body, html {
+    font-family: "Open Sans", Arial, serif;
+    background: #fff;
+    height: 100%;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff;
+}
+
+html {
+    font-size: 62.5%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+*, :after, :before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.mat-button-focus-overlay {
+    background-color: rgba(0,0,0,0) !important; 
+}
+
+
+
+.mat-select {
+    font-family:  "Open Sans", Arial, serif;
+    font-size: inherit;
+}
+
+.mat-option,.mat-form-field {
+    font-family: "Open Sans", Arial, serif;
+}
+
+.mic-form-menu .mat-form-field-wrapper {
+    width: 100%;
+    padding-bottom: 0px;
+}
+
+.mic-form-menu .mat-form-field-flex{
+    background-color: whitesmoke;
+}
+
+.mic-form-menu .mat-form-field-underline{
+    display: none;
+}
+
+.mic-form-menu .mat-form-field-infix{
+    border: 0px;
+    padding: 12px;
+    line-height: 14px;
+}
+
+.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+    color: #ffffff;
+}
+
+.mat-select-panel .mat-option.ht-menu-option.mat-selected:not(.mat-option-multiple) {
+    background: rgb(245, 169, 31);
+}
+
+.mat-option.ht-menu-option {
+    padding: 0px 25px
+}
+
+.mic-form-menu .mat-select-value-text {
+    padding-left: 10px;
+}

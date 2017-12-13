@@ -1,0 +1,425 @@
+.section-mic{
+    font-family: "Open Sans", Arial, serif;
+    background: #9AEDFF;
+    display: table;
+    height: 100vh;
+    padding: 0;
+    z-index: 99;
+    width: 100%;
+}
+
+.section-mic .mic-content {
+    display: table-cell;
+    vertical-align: middle;
+    z-index: 99;
+    text-align: center;
+}
+
+.section-mic .mic-content .from-container {
+    margin: 100px 0 20px;
+    position: relative;
+    width: 100%;
+    float: left;
+}
+
+.section-mic.health{
+    background: #fcbc22;
+}
+
+.form-container .hd {
+    color: #ffffff;
+    font-size: 32px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.form-container .hd_in {
+    color: #ffffff;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.form-container .form-box {
+    font-family: "Open Sans", Arial, serif;
+    width: 75%;
+    margin: 0 auto;
+    padding-top: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-bottom: 36px;
+}
+
+.form-box mat-card-header{
+    background: #fbfbfb;     
+}
+
+.form-box .form-hd {
+    font-family: "Open Sans", Arial, serif;
+    font-size: 20px;
+    color: #000000;
+    text-align: left;
+    padding: 12px 10px 12px 67px;
+    background: #fbfbfb url(/assets/images/policy_icon.png) no-repeat left 30px center;
+    background-size: 22px;
+    margin-bottom: 0px;
+}
+
+.form-box .form-hd.mem-dtl {
+    background: #fbfbfb url(/assets/images/member_icon.png) no-repeat left 30px center;
+    background-size: 18px;
+}
+
+.form-box .form-content{
+    padding: 0 40px;
+}
+
+.form-content .form-sec{
+    display: inline-block;
+    width: 100%;
+    padding: 25px 0px 0px 0px;
+}
+
+.form-sec .from-sec-50{
+    width: 49%;
+    margin-right: 1%;
+    float: left;
+}
+
+.form-sec .from-sec-50:last-child{
+    margin-left: 1%;
+    margin-right: 0px;
+}
+
+.form-sec .form-sec-tt {
+    color: #000000;
+    font-size: 16px;
+    text-align: left;
+    padding-bottom: 12px;
+}
+
+.form-sec .form-input-cont{
+    width: 100%;
+    display: inline-block;
+}
+
+.form-sec .form-input {
+    font-family: "Open Sans", Arial, serif;
+    width: 23.5%;
+    float: left;
+    color: #000000;
+    border-radius: 2px;
+    font-size: 13px;
+    text-transform: uppercase;
+    background: #f5f5f5;
+    line-height: 1.5;
+    padding: 11px 0;
+    margin-right: 2%;
+    cursor: pointer;
+    position: relative;
+}
+
+.form-sec .form-in-2 .form-input, .form-sec .form-in-2 label .form-input{
+    width: 48%;
+    margin-right: 4%;
+}
+
+.form-sec .form-in-2 .form-input:last-child, .form-sec .form-in-2 label:last-child .form-input{
+    margin-right: 0;
+}
+
+.form-sec .form-in-6 .form-input{
+    width: 15%;
+}
+
+.form-input .mat-button-focus-overlay {
+    background-color: rgba(0,0,0,0); 
+}
+
+.form-sec .form-input.no-rgt-mar {
+    margin-right: 0px;
+}
+
+.form-sec .form-input:hover, .form-sec .form-input.active {
+    background: #f3a91f;
+    color: #ffffff;
+    box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.2);
+}
+
+.form-menu{
+    width: 100%;
+    position: absolute;
+    left: 0px;
+    list-style-type: none;
+    padding-left: 0px;
+    top: 39px;
+    margin-top: 0px;
+    background-color: #ffffff;
+    min-height: 20px;
+    max-height: 200px;
+    overflow: auto;
+    z-index: 99;
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+}
+
+.form-sec .form-input:hover .form-menu li{
+    color: #000000;
+}
+
+.form-sec .mic-form-menu{
+    display:flex; 
+    position:relative;
+}
+
+.mic-form-menu .form-menu-tt{
+    width:100%;
+    text-align: center;
+}
+
+.form-menu li{
+    padding: 11px 10px;
+    cursor: pointer;   
+}
+
+.form-menu li:hover, .form-menu li.active{
+    background: #f3a91f;
+    color: #ffffff!important; 
+    -webkit-transition: box-shadow .4s cubic-bezier(.25,.8,.25,1),background-color .4s cubic-bezier(.25,.8,.25,1);
+    transition: box-shadow .4s cubic-bezier(.25,.8,.25,1),background-color .4s cubic-bezier(.25,.8,.25,1);  
+}
+
+.form-menu li:first-child{
+    margin-top: 5px;
+}
+
+.form-menu li:last-child{
+    margin-bottom: 5px;
+}
+
+.form-sec .form-input-cont input{
+    width: 100%;
+    color: #000000;
+    border: 1px solid #bfbfbf;
+    border-radius: 2px;
+    display: block;
+    font-size: 13px;
+    font-weight: normal;
+    height: 41px;
+    padding: 5px 18px;
+}
+
+.form-sec .form-input-cont input:focus {
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+}
+
+.form-container .form-terms {
+    font-size: 13px;
+    color: #989595;
+    width: 100%;
+    text-align: left;
+    padding: 15px 0px 30px 0px;
+}
+
+.form-container .form-terms input[type="checkbox"] {
+    float: left;
+    margin-right: 5px;
+    outline: none;
+    margin-top: 3px;    
+}
+
+.form-container .form-terms a {
+    text-decoration: none;
+    color: #3186c8;
+}
+
+.form-container .form-submit {
+    width: 100%;
+    border-top: 1px solid #edecec;
+    padding: 30px 38px 0px 38px;
+}
+
+.form-container .form-submit button {
+    width: 50%;
+    background: #ff6633;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 16px;
+    line-height: 42px;
+}
+
+.error{
+    display: block;
+    color: #db4437;
+    text-align: left;
+    padding-top: 8px;
+    font-size: 11px;
+    animation: 0.1s errorAnim forwards;
+    float: left;
+}
+
+.form-sec .f-ic {
+    background: #f5f5f5 url(/assets/images/female_icon.png) no-repeat left 30px center;
+    background-size: 10px;
+}
+
+.form-sec .f-ic:hover, .form-sec .f-ic.active, .form-input-cont.form-gender input[type="radio"]:checked + label>.f-ic {
+    background: #f3a91f url(/assets/images/female_hover.png) no-repeat left 30px center;
+    background-size: 10px;
+    color: #ffffff;
+}
+
+.form-sec .m-ic {
+    background: #f5f5f5 url(/assets/images/male_icon.png) no-repeat left 30px center;
+    background-size: 10px;
+}
+
+.form-sec .m-ic:hover, .form-sec .m-ic.active, .form-input-cont.form-gender input[type="radio"]:checked + label>.m-ic {
+    background: #f3a91f url(/assets/images/male_hover.png) no-repeat left 30px center;
+    background-size: 10px;
+    color: #ffffff;
+}
+
+.form-input-cont.form-gender input[type="radio"]{
+    display: none;
+}
+
+.mic-form-menu .select-label{
+    font-family: "Open Sans", Arial, serif;
+    position:absolute;
+    line-height: 14px;
+    padding-left: 7px;
+}
+
+.mic-form-menu .mat-select-value-text {
+    padding-left: 10px;
+}
+
+.form-box .mic-form-menu.other-menu{
+    padding: 1px;
+}
+
+.mic-form-menu.other-menu .select-label:hover, .mic-form-menu.other-menu .select-label.active{
+    background-color: #f3a91f;
+    color: #ffffff;
+    box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.2);
+}
+
+/* .mic-form-menu.other-menu .select-label.active{
+   
+} */
+
+/* .mic-form-menu.other-menu .select-label.active:hover{
+ box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0);
+} */
+
+.mic-form-menu.other-menu .select-label{
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    text-align: center;
+    padding: 12px;
+    cursor: pointer;
+    z-index: 9;
+    background-color: whitesmoke;
+    line-height: 14px;
+}
+
+
+.form-top-mar{
+    margin-top: 75px;
+}
+
+.mic-chip .mat-chip:not(.mat-basic-chip) {
+    background-color: #f4a91f;
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.mic-chip .mat-chip:not(.mat-basic-chip) .mat-chip-remove {
+    color: #ffffff;
+}
+
+.mic-chip {
+    float: left;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.error-class {
+    border: 1px solid #ff0000 !important;
+    border-radius: 0;
+    float: left;
+    width: 100%;
+}
+
+.warning-icon{
+    font-size: 12px;
+    padding-top: 1px;
+    float: left;
+    color: red;
+    margin-right: 5px;
+}
+
+@keyframes errorAnim {
+    from {
+        opacity:0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity:1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes Slider {
+    from {
+      top: 0px;
+    }
+    to {
+      top: 100px;
+    }
+  }
+
+
+/* for screen size 1440 and lower */
+@media (min-width: 1440px){
+    .form-container .hd{
+        font-size: 28px;
+    }
+
+    .form-container .hd_in {
+        font-size: 14px;
+    }
+}
+
+/* for max screen size 1280   */
+@media (max-width: 1280px){
+    .form-container .form-box {
+        width: 85%;
+    }
+
+    .form-box .form-hd {
+        padding: 10px 10px 10px 67px;
+        font-size: 18px;
+        background-size: 20px;
+    }
+
+    .form-content .form-sec {
+        padding: 22px 0px 0px 0px;
+    }
+
+    .form-sec .form-sec-tt {
+        font-size: 15px;
+    }
+
+    .form-sec .form-input {
+        font-size: 12px;
+    }
+
+    .cssmenu ul, .cssmenu li, .cssmenu span, .cssmenu a {
+        font-size: 12px;
+    }
+}

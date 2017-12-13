@@ -1,0 +1,257 @@
+<section class="section-mic health" id="healthform_cont">
+  <div class="mic-content" [hidden]="submitted">
+    <form [formGroup]="healthForm" (ngSubmit)="updateHealthForm(healthForm.value)" novalidate>
+      <div class="form-container" [ngClass]="{'form-top-mar': showMemberSec}">
+        <div class="hd">Compare &amp; Buy Health Insurance Plans</div>
+        <div class="hd_in">Choose from 96 plans from 21 companies</div>
+
+        <!-- policy details -->
+        <mat-card class="form-box" id="bcd">
+          <mat-card-header>
+            <mat-card-title class="form-hd">Policy Details</mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="form-content">
+            <div class="form-sec">
+              <div class="form-sec-tt">Amount of cover you want?</div>
+              <div id="coverborder" class="form-input-cont" [ngClass]="{'error-class': coverError}">
+                <a mat-button class="form-input" [ngClass]="{'active': 'cover_a' == selectedCover}" (click)="coverAmount($event,'5 Lakhs','500000','cover_a')">5 Lakhs</a>
+                <a mat-button class="form-input" [ngClass]="{'active': 'cover_b' == selectedCover}" (click)="coverAmount($event,'4 Lakhs','400000','cover_b')">4 Lakhs</a>
+                <a mat-button class="form-input" [ngClass]="{'active': 'cover_c' == selectedCover}" (click)="coverAmount($event,'3 Lakhs','300000','cover_c')">3 Lakhs</a>
+                    <mat-form-field class="mic-form-menu other-menu no-rgt-mar">
+                      <a mat-button class="select-label" [ngClass]="{'active': selectedCoverList}">Others</a>
+                      <mat-select >
+                        <mat-option class="ht-menu-option" value="{{coverList.amount}}" *ngFor="let coverList of cover_amount;" [ngClass]="{ 'mat-selected mat-active': coverList == selectedCover}" (click)="coverAmount($event,coverList.amount,coverList.literal,coverList)">{{coverList.amount}}</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  <!-- </div> -->
+              </div>
+              <mat-chip-list class="mic-chip" *ngIf="coverChip != ''">
+                <span style="margin-right:10px;">You have selected</span> 
+                <mat-chip [removable]="removeCoverChip" (remove)="removeChip('coverage_amount','coverage_amount_literal')">
+                    {{coverChip}} <mat-icon matChipRemove *ngIf="removeCoverChip">cancel</mat-icon>
+                </mat-chip>
+              </mat-chip-list>
+             
+              <div class="error" *ngIf="coverError"><i class="material-icons warning-icon">warning</i> Please select coverage amount</div>
+            </div>
+            <div class="form-sec">
+              <div class="form-sec-tt">Whom do you want to cover?</div>
+              <div id="termborder" class="form-input-cont" [ngClass]="{'error-class': memberError}">
+                <a mat-button class="form-input" [ngClass]="{'active': 'person_cov_a' == selectedMember}" (click)="memberDetails($event,'1A','MySelf','person_cov_a')">Myself</a>
+                <a mat-button class="form-input" [ngClass]="{'active': 'person_cov_b' == selectedMember}" (click)="memberDetails($event,'2A','Self + Spouse','person_cov_b')">Self + Spouse</a>
+                <a mat-button class="form-input" [ngClass]="{'active': 'person_cov_c' == selectedMember}" (click)="memberDetails($event,'2A1C','Self + Spouse + 1 Child','person_cov_c')">Self + Spouse + 1 Child</a>
+                <mat-form-field class="mic-form-menu other-menu no-rgt-mar">
+                  <a mat-button class="select-label" [ngClass]="{'active': selectedMemberlist}">Others</a>
+                  <mat-select >
+                    <mat-option class="ht-menu-option" value="{{planList.name}}" *ngFor="let planList of plan_type_name;" [ngClass]="{'mat-selected mat-active': coverList == selectedMember}" (click)="memberDetails($event,planList.type,planList.name,planList)">{{planList.name}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <mat-chip-list class="mic-chip" *ngIf="planChip != ''">
+                <span style="margin-right:10px;">You have selected</span> 
+                <mat-chip [removable]="removePlanChip" (remove)="removeChip('plan_type','plan_type_name')">
+                    {{planChip}} <mat-icon matChipRemove *ngIf="removePlanChip">cancel</mat-icon>
+                </mat-chip>
+              </mat-chip-list>
+              <div class="error" *ngIf="memberError"><i class="material-icons warning-icon">warning</i> Please select policy term</div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+        <!-- /policy details -->
+
+        <!-- member details -->
+        <mat-card class="form-box" *ngIf="showMemberSec" id="abc">
+          <mat-card-header>
+            <mat-card-title class="form-hd mem-dtl">Member Details</mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="form-content" >
+            <!-- self -->
+            <div class="form-sec">
+              <div class="from-sec-50">
+                <div class="form-sec-tt">Policyholder Age</div>
+
+                <mat-form-field class="mic-form-menu no-rgt-mar" [ngClass]="{'error-class':healthForm.controls['cust_dob'].invalid && (submitted && healthForm.invalid)}">
+                  <a mat-button class="select-label" *ngIf="healthForm.controls['cust_dob'].value == ''">Select Age</a>
+                  <mat-select formControlName="cust_dob">
+                    <mat-option class="ht-menu-option" value="{{i+18}}" *ngFor="let adultAge of adultAges; let i=index">{{i+18}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <div class="error" *ngIf="healthForm.controls['cust_dob'].invalid && (submitted && healthForm.invalid)">
+                    <div *ngIf="healthForm.controls['cust_dob'].hasError('required')"><i class="material-icons warning-icon">warning</i> {{ rqdMsg }}</div>
+                  </div>
+              </div>
+
+               
+
+              <div class="from-sec-50">
+                <div class="form-sec-tt">Policyholder Gender</div>
+                <div class="form-input-cont form-gender form-in-2" [ngClass]="{'error-class':healthForm.controls['cust_gender'].invalid && (submitted && healthForm.invalid)}">
+                  <input type="radio" id="m_self" value="male" formControlName="cust_gender" (change)="setSpouseGender()"  required>
+                  <label for="m_self"><a class="form-input m-ic" mat-button>Male</a></label>
+                  <input type="radio" id="f_self" value="female" formControlName="cust_gender" (change)="setSpouseGender()" required>
+                  <label for="f_self"><a class="form-input f-ic" mat-button>female</a></label>
+                </div>
+                <div class="error" *ngIf="healthForm.controls['cust_gender'].invalid && (submitted && healthForm.invalid)">
+                    <div *ngIf="healthForm.controls['cust_gender'].hasError('required')"><i class="material-icons warning-icon">warning</i> {{ rqdMsg }}</div>
+                  </div>
+              </div>
+              
+            </div>
+            <!-- /self -->
+            <!-- spouse -->
+            <div class="form-sec" formArrayName="spouces" *ngFor="let spouce of healthForm.get('spouces').controls; let i = index;">
+              <div [formGroupName]="i">  
+              <div class="from-sec-50">
+                    <div class="form-sec-tt">Spouce Age</div>
+                    <mat-form-field class="mic-form-menu no-rgt-mar" [ngClass]="{'error-class':healthForm.controls.spouces.controls[i].controls.spouce_dob.invalid && (submitted && healthForm.invalid)}">
+                      <a mat-button class="select-label" *ngIf="healthForm.controls.spouces.controls[i].controls.spouce_dob.value == ''">Select Age</a>
+                      <mat-select formControlName="spouce_dob">
+                        <mat-option class="ht-menu-option" value="{{i+18}}" *ngFor="let adultAge of adultAges; let i=index">{{i+18}}</mat-option>
+                      </mat-select>
+                      </mat-form-field>
+                      <div class="error" *ngIf="healthForm.controls.spouces.controls[i].controls.spouce_dob.invalid && (submitted && healthForm.invalid)">
+                        <div *ngIf="healthForm.controls.spouces.controls[i].controls.spouce_dob.hasError('required')"><i class="material-icons warning-icon">warning</i> {{ rqdMsg }}</div>
+                      </div>
+                    
+                </div>
+
+                
+
+                <div class="from-sec-50">
+                  <div class="form-sec-tt">Spouce Gender</div>
+                  <div class="form-input-cont form-gender form-in-2" [ngClass]="{'error-class':healthForm.controls.spouces.controls[i].controls.spouce_gender.invalid && (submitted && healthForm.invalid)}">
+                    <input type="radio" id="m_spouce{{i}}" value="male" formControlName="spouce_gender" disabled="true" required>
+                    <label for="m_spouce{{i}}"><a class="form-input m-ic" mat-button>Male</a></label>
+                    <input type="radio" id="f_spouce{{i}}" value="female" formControlName="spouce_gender" disabled="true" required>
+                    <label for="f_spouce{{i}}"><a class="form-input f-ic" mat-button>female</a></label>
+                  </div>
+                 
+                  <div class="error" *ngIf="healthForm.controls.spouces.controls[i].controls.spouce_gender.invalid && (submitted && healthForm.invalid)">
+                      <div *ngIf="healthForm.controls.spouces.controls[i].controls.spouce_gender.hasError('required')"><i class="material-icons warning-icon">warning</i> {{ rqdMsg }}</div>
+                    </div>
+
+                </div>
+                </div>
+              </div>
+            <!-- spouse -->
+
+            <!-- child -->
+            <div class="form-sec" style="display:flex;" formArrayName="childs" *ngFor="let child of healthForm.get('childs').controls; let i = index;">
+              <div [formGroupName]="i" style="width: 100%;">  
+              <div class="from-sec-50">
+                    <div class="form-sec-tt">Child {{i+1}} Age</div>
+                    <mat-form-field class="mic-form-menu no-rgt-mar" [ngClass]="{'error-class':healthForm.controls.childs.controls[i].controls.child_dob.invalid && (submitted && healthForm.invalid)}">
+                        <a mat-button class="select-label" *ngIf="healthForm.controls.childs.controls[i].controls.child_dob.value == ''">Select Age</a>
+                      <mat-select formControlName="child_dob">
+                        <mat-option class="ht-menu-option" value="0" ><1</mat-option>
+                        <mat-option class="ht-menu-option" value="{{i+1}}" *ngFor="let childAge of childAges; let i=index">{{i+1}}</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                    <div class="error" *ngIf="healthForm.controls.childs.controls[i].controls.child_dob.invalid && (submitted && healthForm.invalid)">
+                        <div *ngIf="healthForm.controls.childs.controls[i].controls.child_dob.hasError('required')"><i class="material-icons warning-icon">warning</i> {{ rqdMsg }}</div>
+                      </div>
+                </div>
+                
+
+                <div class="from-sec-50">
+                  <div class="form-sec-tt">Child {{i+1}} Gender</div>
+                  <div class="form-input-cont form-gender form-in-2" [ngClass]="{'error-class':healthForm.controls.childs.controls[i].controls.child_gender.invalid && (submitted && healthForm.invalid)}">
+                    <input type="radio" id="m_child{{i}}" value="male" formControlName="child_gender" required>
+                    <label for="m_child{{i}}"><a class="form-input m-ic" mat-button>Male</a></label>
+                    <input type="radio" id="f_child{{i}}" value="female" formControlName="child_gender" required>
+                    <label for="f_child{{i}}"><a class="form-input f-ic" mat-button>female</a></label>
+                  </div>
+                 
+                  <div class="error" *ngIf="healthForm.controls.childs.controls[i].controls.child_gender.invalid && (submitted && healthForm.invalid)">
+                      <div *ngIf="healthForm.controls.childs.controls[i].controls.child_gender.hasError('required')"><i class="material-icons warning-icon">warning</i> {{ rqdMsg }}</div>
+                    </div>
+
+                </div>
+                </div>
+              </div>
+              <!-- child -->
+
+            <div class="form-sec">
+              <div class="form-sec-tt">City of Residence</div>
+
+              <div id="cityborder" class="form-input-cont form-in-6" [ngClass]="{'error-class': cityError}">
+                <a class="form-input" mat-button [ngClass]="{'active': 'city_a' == selectedCity}" (click)="cityDetails($event,'590','Mumbai, Maharashtra','city_a')">Mumbai</a>
+                <a class="form-input" mat-button [ngClass]="{'active': 'city_b' == selectedCity}" (click)="cityDetails($event,'188','Delhi, Delhi','city_b')">Delhi</a>
+                <a class="form-input" mat-button [ngClass]="{'active': 'city_c' == selectedCity}" (click)="cityDetails($event,'393','Bengaluru, Karnataka','city_c')">Bengaluru</a>
+                <a class="form-input" mat-button [ngClass]="{'active': 'city_d' == selectedCity}" (click)="cityDetails($event,'600','Pune, Maharashtra','city_d')">Pune</a>
+                <a class="form-input" mat-button [ngClass]="{'active': 'city_e' == selectedCity}" (click)="cityDetails($event,'590','Chennai, Tamil Nadu','city_e')">Chennai</a>
+                <mat-form-field class="mic-form-menu other-menu no-rgt-mar">
+                  <label class="select-label" [ngClass]="{'active': selectedCitylist}">Others</label>
+                  <mat-select >
+                    <mat-option class="ht-menu-option" [ngClass]="{'mat-selected mat-active': 'city_f' == selectedCity}" (click)="cityDetails($event,'188','Delhi, Delhi','city_f')">Delhi</mat-option>
+                    <mat-option class="ht-menu-option" [ngClass]="{'mat-selected mat-active': 'city_g' == selectedCity}" (click)="cityDetails($event,'590','Mumbai, Maharashtra','city_g')">Mumbai</mat-option>
+                    <mat-option class="ht-menu-option" [ngClass]="{'mat-selected mat-active': 'city_h' == selectedCity}" (click)="cityDetails($event,'393','Bengaluru, Karnataka','city_h')">Bengaluru</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="error" *ngIf="cityError"><i class="material-icons warning-icon">warning</i> Please select your city</div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+        <!-- /member details -->
+
+        <!-- policyholder details -->
+        <mat-card class="form-box" *ngIf="showpolicyholderSec">
+            <mat-card-header>
+              <mat-card-title class="form-hd mem-dtl">Member Details</mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="form-content">
+              <div class="form-sec">
+                <div class="from-sec-50">
+                    <div class="form-sec-tt">Full Name</div>
+                    <div class="form-input-cont form-in-2">
+                      <input type="text" class="" formControlName="cust_name" required [ngClass]="{'error-class': healthForm.controls['cust_name'].invalid && (healthForm.controls['cust_name'].touched || (submitted && healthForm.invalid))}">
+                      <div class="error" *ngIf="healthForm.controls['cust_name'].invalid && (healthForm.controls['cust_name'].touched || (submitted && healthForm.invalid))">
+                          <div *ngIf="healthForm.controls['cust_name'].hasError('required')"><i class="material-icons warning-icon">warning</i> {{ rqdMsg }}</div>
+                      </div>
+                    </div>
+                </div>
+          
+                <div class="from-sec-50">
+                  <div class="form-sec-tt">Mobile</div>
+                  <div class="form-input-cont form-in-2">
+                      <input type="tel" class="" maxlength="10" formControlName="cust_mobile" required [ngClass]="{'error-class': healthForm.controls['cust_mobile'].invalid && (healthForm.controls['cust_mobile'].touched || (submitted && healthForm.invalid))}">
+                      <div class="error" *ngIf="healthForm.controls['cust_mobile'].invalid && (healthForm.controls['cust_mobile'].touched || (submitted && healthForm.invalid))">
+                          <div *ngIf="healthForm.controls['cust_mobile'].hasError('required')"><i class="material-icons warning-icon">warning</i> {{ rqdMsg }}</div>
+                          <div *ngIf="healthForm.controls['cust_mobile'].hasError('pattern')"><i class="material-icons warning-icon">warning</i> Please enter valid mobile</div>
+                      </div>
+                  </div>
+                </div>
+                
+              </div>
+              <div class="form-sec">
+                <div class="form-sec-tt">Email</div>
+                <div class="form-input-cont">
+                    <input type="text" class="" formControlName="cust_email" required [ngClass]="{'error-class':healthForm.controls['cust_email'].invalid && ( healthForm.controls['cust_email'].touched || (submitted && healthForm.invalid))}">
+                    <div class="error" *ngIf="healthForm.controls['cust_email'].invalid && ( healthForm.controls['cust_email'].touched || (submitted && healthForm.invalid))">
+                      <div *ngIf="healthForm.controls['cust_email'].hasError('required')"><i class="material-icons warning-icon">warning</i> {{ rqdMsg }}</div>
+                      <div *ngIf="healthForm.controls['cust_email'].hasError('pattern')"><i class="material-icons warning-icon">warning</i> Please enter valid email</div>
+                    </div>
+                </div>
+              </div>
+              <div class="form-terms">
+                <input type="checkbox" id="check_term" name="agree" checked="" class="field checkbox" value="agree">By sharing the above information I authorize MyInsuranceClub &amp; its partners to Call/SMS &amp; agree to the <a href="https://www.myinsuranceclub.com/terms-of-use" class="link" target="_blank">Terms of Use.</a>
+                <div id="agree-error" class="error_msg" style="display:none;"></div>
+              </div>
+
+              <div class="form-submit">
+                <button type="submit" mat-raised-button>Show plans</button>                                                         
+              </div>  
+            </mat-card-content>
+          </mat-card>
+
+         
+        <!-- /member details -->
+
+
+      </div>
+    </form>
+  </div>
+</section>
+
+ 

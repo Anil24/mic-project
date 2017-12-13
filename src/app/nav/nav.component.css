@@ -1,0 +1,186 @@
+.navbar{
+    background-color: transparent;
+    border-bottom: 6px solid transparent;
+    /* box-shadow: 0px 0px 7px 0px transparent; */
+    height: 92px;
+    width: 100%;
+    /* overflow: auto;  */
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 999;
+}
+
+/* Logo-container */
+.navbar .logo-container{
+    float: left;
+    margin: 0px 0 0 25px;
+    display: flex;
+    height: 100%;
+}
+
+.logo-container .mic-logo{
+    float: left;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;    
+}
+
+.logo-container .mic-right-txt{
+    float: left;
+    text-align: left;
+    font-size: 13px;
+    margin: 37px 15px 0px;
+    color: #343434;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center; 
+}
+/* /Logo-container */
+
+/* Nav-container */
+.nav-container{
+    float: right;
+    margin: 27px 20px 0 10px;
+}
+
+.nav-container ul{
+    float: right;
+    padding-left: 0px;
+    margin: 8px 0px 0px 0px;
+}
+
+.nav-container ul > li {
+    list-style: none;
+    display: inline-block;
+    margin: 0px 30px;
+    font-size: 15px;
+    line-height: 45px;
+}
+
+.nav-container ul > li a{
+    text-decoration: none;
+    color: #000000;
+    display: block;
+    padding: 0px;
+    outline: none;
+}
+
+.nav-container > ul li:hover a {
+    border-bottom: 2px solid #ff6633;
+}
+
+/* dropdown */
+
+.drop-down > a:after {
+    content: "expand_more";
+    font-size: 20px;
+    position: relative;
+    top: 5px;
+    margin-left: 2px;
+    color: #000000;
+    font-family: 'Material Icons';
+    font-style: normal;
+}
+
+.drop-down:hover > a:after {
+    content: "expand_less";
+    color: #ff6633;
+}
+
+.mic-menu {
+    background: none repeat scroll 0 0 #ffffff;
+    left: 0;
+    margin-top: 0px;
+    position: absolute;
+    width: 100%;
+    padding: 12px 0px 38px 0px;
+    /* border-top: 6px solid #fcbc22; */
+    display: none;
+    z-index: 999;
+}
+
+.nav-container > ul li:hover .mic-menu{
+    display: block;
+}
+
+.mic-menu ul li {
+    display: block;
+    line-height: normal;
+    margin: 0;
+    padding: 6px 0;
+    color: #878787;
+    font-size: 14px;
+}
+
+.mic-menu-cont {
+    width: 1095px;
+    margin: 0 auto;
+    position: relative;
+    overflow: auto;
+}
+
+.mm-3column {
+    float: left;
+    width: auto;
+    margin-right: 5%;
+}
+
+.mm-3column:last-child {
+    margin: 0;
+}
+
+.categories-list {
+    float: left;
+    width: auto;
+}
+
+.categories-list ul{
+    float: left;
+}
+
+.categories-list ul li a {
+    color: #878787;
+    text-decoration: none;
+    border-bottom: none !important;
+}
+
+.categories-list ul li a:hover {
+    color: #ff6633 ;
+    border: none ;
+}
+
+.categories-list .hd {
+    color: #3c3d3d;
+    font-size: 14px;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    border-bottom: 1px solid #e6e6e6;
+    width: 100%;
+}
+
+.categories-list .categories-list-child {
+    margin-right: 43px !important;
+}
+
+/* dropdown */
+
+/* Nav-container */
+
+/* responsive */
+@media (max-width: 1080px){
+    .navbar .logo-container {
+        float: left;
+        text-align: left;
+        margin: 0 0 0 15px;
+    }
+
+    .nav-container ul > li {
+        margin: 0px 14px;
+    }
+}
+
+/* responsive */
